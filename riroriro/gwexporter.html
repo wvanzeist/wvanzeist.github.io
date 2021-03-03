@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gwexporter &#8212; riroriro v</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="snrcalculatorfuns" href="snrcalculatorfuns.html" />
+    <link rel="prev" title="mergersecondfuns" href="mergersecondfuns.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">riroriro</span><span id="logotext2"></span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="snrcalculatorfuns.html" title="snrcalculatorfuns">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="mergersecondfuns.html" title="mergersecondfuns">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">riroriro v</a>
+	 &#187;
+      </li>
+      
+      <li>gwexporter</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gwexporter">
+<h1>gwexporter<a class="headerlink" href="#gwexporter" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the gwexporter module, which consists of functions to output the gravitational waveforms from inspiralfuns, mergerfirstfuns, matchingfuns and mergersecondfuns into a file.</p>
+<div class="section" id="waveform-exporter">
+<h2>waveform_exporter<a class="headerlink" href="#waveform-exporter" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">waveform_exporter(time,freq,amp,path)</span></code></p>
+<p>Function to export a simulated gravitational waveform into a file.</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>time: list of floats</dt><dd><p>The time at each data point. For a BH-BH merger, use i_m_time from
+time_frequency_stitching in matchingfuns. For a BH-NS or NS-NS merger,
+use i_time (realtimes) from inspiral_time_conversion in inspiralfuns.</p>
+</dd>
+<dt>freq: list of floats</dt><dd><p>The frequency of the GW signal at each data point. For a BH-BH merger,
+use i_m_freq from frequency_SI_units in matchingfuns. For a BH-NS or
+NS-NS merger, use i_freq (freq) from inspiral_phase_freq_integration
+in inspiralfuns.</p>
+</dd>
+<dt>amp: list of floats</dt><dd><p>The amplitude of the GW strain at each data point. For a BH-BH merger,
+use i_m_amp from amplitude_stitching in mergersecondfuns. For a BH-NS
+or NS-NS merger, use i_amp from inspiral_strain_amplitude in
+inspiralfuns.</p>
+</dd>
+<dt>path: str</dt><dd><p>The file path to the location/document where you want to save the
+simulated gravitational waveform data.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<p>An output file containing an array wherein the first column is the time,
+the second is the frequency and the third is the amplitude.</p>
+</div>
+</div>
+<div class="section" id="waveform-arrayer">
+<h2>waveform_arrayer<a class="headerlink" href="#waveform-arrayer" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">waveform_arrayer(time,freq,amp)</span></code></p>
+<p>Function to collate important data of the simulated gravitational waveform
+(for SNR calculation etc.) into a single array for ease of storage. Similar
+to waveform_exporter(), but instead of outputting the area into a file,
+this function outputs the data inline in Python, in a numpy.ndarray.</p>
+<div class="section" id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>time: list of floats</dt><dd><p>The time at each data point. For a BH-BH merger, use i_m_time from
+time_frequency_stitching in matchingfuns. For a BH-NS or NS-NS merger,
+use i_time (realtimes) from inspiral_time_conversion in inspiralfuns.</p>
+</dd>
+<dt>freq: list of floats</dt><dd><p>The frequency of the GW signal at each data point. For a BH-BH merger,
+use i_m_freq from frequency_SI_units in matchingfuns. For a BH-NS or
+NS-NS merger, use i_freq (freq) from inspiral_phase_freq_integration
+in inspiralfuns.</p>
+</dd>
+<dt>amp: list of floats</dt><dd><p>The amplitude of the GW strain at each data point. For a BH-BH merger,
+use i_m_amp from amplitude_stitching in mergersecondfuns. For a BH-NS
+or NS-NS merger, use i_amp from inspiral_strain_amplitude in
+inspiralfuns.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>exportarray: numpy.ndarray</dt><dd><p>An array containing the important data of the simulated gravitational
+waveform: the first column is the time, the second is the frequency and
+the third is the amplitude.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">gwexporter</a><ul>
+<li><a class="reference internal" href="#waveform-exporter">waveform_exporter</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#returns">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#waveform-arrayer">waveform_arrayer</a><ul>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
+<li><a class="reference internal" href="#id2">Returns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/riroriro/gwexporter.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2021, Wouter van Zeist.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 3.4.3. &nbsp;
+    Last built 03 Mar 2021. <br/>
+  </p>
+</footer>
+  </body>
+</html>

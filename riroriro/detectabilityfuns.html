@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>detectabilityfuns &#8212; riroriro v</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tests" href="tests.html" />
+    <link rel="prev" title="horizondistfuns" href="horizondistfuns.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">riroriro</span><span id="logotext2"></span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="tests.html" title="tests">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="horizondistfuns.html" title="horizondistfuns">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">riroriro v</a>
+	 &#187;
+      </li>
+      
+      <li>detectabilityfuns</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="detectabilityfuns">
+<h1>detectabilityfuns<a class="headerlink" href="#detectabilityfuns" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the detectabilityfuns module, which consists of parts of the procedure for calculating the detectability fraction of a merger given its optimal-alignment SNR, collected into modular functions.</p>
+<div class="section" id="cdf-generator">
+<h2>cdf_generator<a class="headerlink" href="#cdf-generator" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cdf_generator(N=10**6)</span></code></p>
+<p>Generates the cumulative distribution function (CDF) of the projection
+function Theta, for use with detectability_calculator(), based on Finn
+(1996), Belczynski et al. (2013), Belczynski et al. (2014).</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>N: int</dt><dd><p>The number of random samples of Theta you want to take to build the
+CDF. Default: 10**6.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>Theta_CDF: function</dt><dd><p>The CDF of the projection function Theta.</p>
+</dd>
+<dt>min_CDF: float</dt><dd><p>The lower boundary of the range over which Theta_CDF is defined.</p>
+</dd>
+<dt>max_CDF: float</dt><dd><p>The upper boundary of the range over which Theta_CDF is defined.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="detectability-calculator">
+<h2>detectability_calculator<a class="headerlink" href="#detectability-calculator" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">detectability_calculator(Theta_CDF,min_CDF,max_CDF,SNR_in)</span></code></p>
+<p>Given the optimal-alignment SNR of a merger, this function returns the
+fraction of arbitrary orientations in which the merger would be expected to
+be observable (i.e. have a SNR above 8).</p>
+<div class="section" id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>Theta_CDF: function</dt><dd><p>The CDF of the projection function Theta, from cdf_generator().</p>
+</dd>
+<dt>min_CDF: float</dt><dd><p>The lower boundary of the range over which Theta_CDF is defined, from
+cdf_generator().</p>
+</dd>
+<dt>max_CDF: float</dt><dd><p>The upper boundary of the range over which Theta_CDF is defined, from
+cdf_generator().</p>
+</dd>
+<dt>SNR_in: float</dt><dd><p>The optimal-alignment SNR of the merger in question, can be obtained
+from snrcalculatorfuns.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>det: float</dt><dd><p>The detectability fraction of the merger.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="specific-orientation-snr">
+<h2>specific_orientation_SNR<a class="headerlink" href="#specific-orientation-snr" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">specific_orientation_SNR(theta,phi,iota,psi,SNR_in,angle_unit='rad')</span></code></p>
+<p>Given the optimal-alignment SNR of a merger, this function returns the SNR
+that would result if the detector and binary had a specific orientation/
+alignment, specified by four angles as in Finn (1996), Belczynski et al.
+(2013), Belczynski et al. (2014).</p>
+<div class="section" id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>theta: float</dt><dd><p>One of the angles descriving the direction of the line of sight to the
+gravitational wave source relative to the axes of the detector’s arms
+(sky-location coordinates). Ranges from 0 to π/2 rad (90 deg).</p>
+</dd>
+<dt>phi: float</dt><dd><p>One of the angles descriving the direction of the line of sight to the
+gravitational wave source relative to the axes of the detector’s arms
+(sky-location coordinates). Ranges from 0 to 2π rad (360 deg).</p>
+</dd>
+<dt>iota: float</dt><dd><p>The inclination angle of the binary. Ranges from 0 to π/2 rad (90 deg).</p>
+</dd>
+<dt>psi: float</dt><dd><p>The polarisation angle of the binary. Ranges from 0 to π (180 deg).</p>
+</dd>
+<dt>SNR_in: float</dt><dd><p>The optimal-alignment SNR of the merger in question, can be obtained
+from snrcalculatorfuns.</p>
+</dd>
+<dt>angle_unit: str</dt><dd><p>Specifies whether the input angles are given in ‘rad’ or ‘deg’; the
+default is ‘rad’.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>SNR_out: float</dt><dd><p>The SNR of the merger in question at the specific orientation given by
+the input angles.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">detectabilityfuns</a><ul>
+<li><a class="reference internal" href="#cdf-generator">cdf_generator</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#returns">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detectability-calculator">detectability_calculator</a><ul>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
+<li><a class="reference internal" href="#id2">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#specific-orientation-snr">specific_orientation_SNR</a><ul>
+<li><a class="reference internal" href="#id3">Parameters</a></li>
+<li><a class="reference internal" href="#id4">Returns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/riroriro/detectabilityfuns.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2021, Wouter van Zeist.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 3.4.3. &nbsp;
+    Last built 03 Mar 2021. <br/>
+  </p>
+</footer>
+  </body>
+</html>

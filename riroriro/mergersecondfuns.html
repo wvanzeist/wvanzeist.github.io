@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mergersecondfuns &#8212; riroriro v</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="gwexporter" href="gwexporter.html" />
+    <link rel="prev" title="matchingfuns" href="matchingfuns.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">riroriro</span><span id="logotext2"></span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="gwexporter.html" title="gwexporter">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="matchingfuns.html" title="matchingfuns">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">riroriro v</a>
+	 &#187;
+      </li>
+      
+      <li>mergersecondfuns</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mergersecondfuns">
+<h1>mergersecondfuns<a class="headerlink" href="#mergersecondfuns" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the mergersecondfuns module, which consists of the post-matching parts of the procedure for simulating the merger/ringdown portions of gravitational waves from binary black holes, collected into modular functions.</p>
+<div class="section" id="merger-phase-calculation">
+<h2>merger_phase_calculation<a class="headerlink" href="#merger-phase-calculation" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">merger_phase_calculation(min_switch_ind,final_i_index,i_phase,m_omega)</span></code></p>
+<p>Calculation of the orbital phase for the merger/ringdown portion, based
+on Buskirk et al. (2019) equation 21.</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
+merger/ringdown should occur, from min_switch_ind_finder() in
+matchingfuns.</p>
+</dd>
+<dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
+ringdown, from final_i_index_finder() in matchingfuns.</p>
+</dd>
+<dt>i_phase: list of floats</dt><dd><p>Values of orbital phase at each timestep for the inspiral portion, from
+inspiral_phase_freq_integration() in inspiralfuns.</p>
+</dd>
+<dt>m_omega: list of floats</dt><dd><p>Values of angular frequency over time for the merger/ringdown portion,
+from merger_freq_calculation() in mergerfirstfuns.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>m_phase: list of floats</dt><dd><p>Values of orbital phase over time for the merger/ringdown portion.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="phase-stitching">
+<h2>phase_stitching<a class="headerlink" href="#phase-stitching" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">phase_stitching(final_i_index,i_phase,m_phase)</span></code></p>
+<p>Stitching together the inspiral and merger/ringdown portions of the phase
+lists to give a combined list with the correct matching.</p>
+<div class="section" id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
+ringdown, from final_i_index_finder() in matchingfuns.</p>
+</dd>
+<dt>i_phase: list of floats</dt><dd><p>Values of orbital phase at each timestep for the inspiral portion, from
+inspiral_phase_freq_integration() in inspiralfuns.</p>
+</dd>
+<dt>m_phase: list of floats</dt><dd><p>Values of orbital phase over time for the merger/ringdown portion, from
+merger_phase_calculation().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>i_m_phase: list of floats</dt><dd><p>Values of orbital phase over time for the entire duration of the
+gravitational waveform.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="merger-strain-amplitude">
+<h2>merger_strain_amplitude<a class="headerlink" href="#merger-strain-amplitude" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">merger_strain_amplitude(min_switch_ind,final_i_index,alpha,i_amp,m_omega,fhat,fhatdot)</span></code></p>
+<p>Calculating the amplitude of strain for the merger/ringdown portion, based
+on Buskirk et al. (2019) equation 16.</p>
+<div class="section" id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
+merger/ringdown should occur, from min_switch_ind_finder() in
+matchingfuns.</p>
+</dd>
+<dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
+ringdown, from final_i_index_finder() in matchingfuns.</p>
+</dd>
+<dt>alpha: float</dt><dd><p>A gIRS coefficient, from gIRS_coefficients() in mergerfirstfuns.</p>
+</dd>
+<dt>i_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the inspiral
+portion, from inspiral_strain_amplitude() in inspiralfuns.</p>
+</dd>
+<dt>m_omega: list of floats</dt><dd><p>Values of angular frequency over time for the merger/ringdown portion,
+from merger_freq_calculation() in mergerfirstfuns.</p>
+</dd>
+<dt>fhat: list of floats</dt><dd><p>Values of a sort of frequency parameter called fhat (f^) over time,
+from merger_freq_calculation() in mergerfirstfuns.</p>
+</dd>
+<dt>fhatdot: list of floats</dt><dd><p>Values of the time-derivative of fhat over time, from
+fhat_differentiation() in mergerfirstfuns.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>m_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the
+merger/ringdown portion.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="amplitude-stitching">
+<h2>amplitude_stitching<a class="headerlink" href="#amplitude-stitching" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">amplitude_stitching(final_i_index,i_amp,m_amp)</span></code></p>
+<p>Stitching together the inspiral and merger/ringdown portions of the
+amplitude lists to give a combined list with the correct matching.</p>
+<div class="section" id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
+ringdown, from final_i_index_finder() in matchingfuns.</p>
+</dd>
+<dt>i_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the inspiral
+portion, from inspiral_strain_amplitude() in inspiralfuns.</p>
+</dd>
+<dt>m_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the
+merger/ringdown portion, from merger_strain_amplitude().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id6">
+<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>i_m_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the entire
+duration of the gravitational waveform.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">mergersecondfuns</a><ul>
+<li><a class="reference internal" href="#merger-phase-calculation">merger_phase_calculation</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#returns">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#phase-stitching">phase_stitching</a><ul>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
+<li><a class="reference internal" href="#id2">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#merger-strain-amplitude">merger_strain_amplitude</a><ul>
+<li><a class="reference internal" href="#id3">Parameters</a></li>
+<li><a class="reference internal" href="#id4">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#amplitude-stitching">amplitude_stitching</a><ul>
+<li><a class="reference internal" href="#id5">Parameters</a></li>
+<li><a class="reference internal" href="#id6">Returns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/riroriro/mergersecondfuns.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2021, Wouter van Zeist.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 3.4.3. &nbsp;
+    Last built 03 Mar 2021. <br/>
+  </p>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>snrcalculatorfuns &#8212; riroriro v</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="horizondistfuns" href="horizondistfuns.html" />
+    <link rel="prev" title="gwexporter" href="gwexporter.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">riroriro</span><span id="logotext2"></span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="horizondistfuns.html" title="horizondistfuns">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="gwexporter.html" title="gwexporter">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">riroriro v</a>
+	 &#187;
+      </li>
+      
+      <li>snrcalculatorfuns</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="snrcalculatorfuns">
+<h1>snrcalculatorfuns<a class="headerlink" href="#snrcalculatorfuns" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the snrcalculatorfuns module, which consists of parts of the procedure for calculating the SNR of a gravitational waveform (from gwexporter or otherwise), collected into modular functions.</p>
+<div class="section" id="polynomial-redshift">
+<h2>polynomial_redshift<a class="headerlink" href="#polynomial-redshift" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">polynomial_redshift(d)</span></code></p>
+<p>Polynomial approximation of calculating redshift corresponding to a given
+distance.</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>d: float</dt><dd><p>A luminosity distance, in Mpc.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>z: float</dt><dd><p>The redshift corresponding to the input distance.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="redshift-distance-adjustment">
+<h2>redshift_distance_adjustment<a class="headerlink" href="#redshift-distance-adjustment" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">redshift_distance_adjustment(inputarray,d,z)</span></code></p>
+<p>Adjusts the frequencies and amplitudes in the input gravitational waveform
+to account for the effects of distance/redshift.</p>
+<div class="section" id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform,
+in the format used by waveform_exporter() in gwexporter.</p>
+</dd>
+<dt>d: float</dt><dd><p>The luminosity distance to the merging binary, in Mpc.</p>
+</dd>
+<dt>z: float</dt><dd><p>The redshift corresponding to the input distance.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>adjustedarray: numpy.ndarray</dt><dd><p>inputarray, but with the frequency and amplitudes adjusted.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="frequency-limits">
+<h2>frequency_limits<a class="headerlink" href="#frequency-limits" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">frequency_limits(inputarray)</span></code></p>
+<p>Calculates the upper and lower limits of the frequency of the gravitational
+waveform in inputarray, which are used by amplitude_interpolation().</p>
+<div class="section" id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform;
+should have been adjusted by redshift_distance_adjustment().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>(freqmax,freqmin): tuple of floats</dt><dd><p>The upper and lower limits of the waveform signal frequency,
+respectively.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="findchirp-fourier">
+<h2>findchirp_fourier<a class="headerlink" href="#findchirp-fourier" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">findchirp_fourier(inputarray,findchirp_array,d,z)</span></code></p>
+<p>Approximation of a Fourier transform on the gravitational waveform data,
+using the frequency spectrum output by the simpler model FINDCHIRP (Allen
+et al., 2012) for calibration.
+NOTE: May in the future be replaced by something fft-based.</p>
+<div class="section" id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform;
+should have been adjusted by redshift_distance_adjustment().</p>
+</dd>
+<dt>findchirp_array: numpy.ndarray</dt><dd><p>The array output by FINDCHIRP. The second column is frequency, the
+fourth is (Fourier-transformed) strain amplitude, the other columns
+are irrelevant. A grid of sample findchirp_arrays can be found at
+<a class="reference external" href="https://drive.google.com/drive/folders/12TYxYKtBL1iuFHG_ySFhS12Aqv4JHGOr">https://drive.google.com/drive/folders/12TYxYKtBL1iuFHG_ySFhS12Aqv4JHGOr</a></p>
+</dd>
+<dt>d: float</dt><dd><p>The luminosity distance to the merging binary, in Mpc.</p>
+</dd>
+<dt>z: float</dt><dd><p>The redshift corresponding to the input distance.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id6">
+<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>fourieramp: list</dt><dd><p>Fourier-transformed/calibrated amplitudes at each frequency value in
+inputarray.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="amplitude-interpolation">
+<h2>amplitude_interpolation<a class="headerlink" href="#amplitude-interpolation" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">amplitude_interpolation(inputarray,fourieramp,noisearray,freqmax,freqmin)</span></code></p>
+<p>The simulated gravitational waveform data and the detector noise spectrum
+are assumed to have amplitude data at different sets of frequencies, so
+this function uses scipy’s interp1d to calculate the waveform amplitude
+values at the frequencies used by the detector data.</p>
+<div class="section" id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform;
+should have been adjusted by redshift_distance_adjustment().</p>
+</dd>
+<dt>fourieramp: list</dt><dd><p>Fourier-transformed/calibrated amplitudes at each frequency value in
+inputarray, from findchirp_fourier().</p>
+</dd>
+<dt>noisearray: numpy.ndarray</dt><dd><p>Data on the noise spectrum of the detector; it is assumed that
+frequency values are in the first column and ASD noise levels in the
+second.</p>
+</dd>
+<dt>freqmax: float</dt><dd><p>The upper limit of the waveform signal frequency, from
+frequency_limits().</p>
+</dd>
+<dt>freqmin: float</dt><dd><p>The lower limit of the waveform signal frequency, from
+frequency_limits().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>noise_freq_amp: list</dt><dd><p>Waveform amplitudes as in fourieramp, but over the set of frequencies
+in noisearray rather than those in inputarray.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="individual-detector-snr">
+<h2>individual_detector_SNR<a class="headerlink" href="#individual-detector-snr" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">individual_detector_SNR(noisearray,noise_freq_amp)</span></code></p>
+<p>Calculates the single-detector optimal-alignment SNR by comparing the
+waveform frequency spectrum and detector noise spectrum using the method of
+Barrett et al. (2018).</p>
+<div class="section" id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>noisearray: numpy.ndarray</dt><dd><p>Data on the noise spectrum of the detector; it is assumed that
+frequency values are in the first column and ASD noise levels in the
+second.</p>
+</dd>
+<dt>noise_freq_amp: list</dt><dd><p>Amplitudes of the simulated gravitational waveform, over the set of
+frequencies of noisearray, from amplitude_interpolation().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id10">
+<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>ind_SNR: float</dt><dd><p>The SNR of the simulated gravitational waveform, for the detector in
+noisearray and assuming optimal alignment.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">snrcalculatorfuns</a><ul>
+<li><a class="reference internal" href="#polynomial-redshift">polynomial_redshift</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#returns">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#redshift-distance-adjustment">redshift_distance_adjustment</a><ul>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
+<li><a class="reference internal" href="#id2">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#frequency-limits">frequency_limits</a><ul>
+<li><a class="reference internal" href="#id3">Parameters</a></li>
+<li><a class="reference internal" href="#id4">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#findchirp-fourier">findchirp_fourier</a><ul>
+<li><a class="reference internal" href="#id5">Parameters</a></li>
+<li><a class="reference internal" href="#id6">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#amplitude-interpolation">amplitude_interpolation</a><ul>
+<li><a class="reference internal" href="#id7">Parameters</a></li>
+<li><a class="reference internal" href="#id8">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#individual-detector-snr">individual_detector_SNR</a><ul>
+<li><a class="reference internal" href="#id9">Parameters</a></li>
+<li><a class="reference internal" href="#id10">Returns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/riroriro/snrcalculatorfuns.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2021, Wouter van Zeist.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 3.4.3. &nbsp;
+    Last built 03 Mar 2021. <br/>
+  </p>
+</footer>
+  </body>
+</html>

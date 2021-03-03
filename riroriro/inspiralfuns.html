@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>inspiralfuns &#8212; riroriro v</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mergerfirstfuns" href="mergerfirstfuns.html" />
+    <link rel="prev" title="riroriro Documentation" href="index.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">riroriro</span><span id="logotext2"></span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="mergerfirstfuns.html" title="mergerfirstfuns">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="index.html" title="riroriro Documentation">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">riroriro v</a>
+	 &#187;
+      </li>
+      
+      <li>inspiralfuns</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="inspiralfuns">
+<h1>inspiralfuns<a class="headerlink" href="#inspiralfuns" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the inspiralfuns module, which consists of parts of the procedure for simulating the inspiral portions of gravitational waves, collected into modular functions.</p>
+<div class="section" id="get-m-and-eta">
+<h2>get_M_and_eta<a class="headerlink" href="#get-m-and-eta" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">get_M_and_eta(**kwargs)</span></code></p>
+<p>Gives total mass (M) and symmetric mass ratio (eta) from either m1 and m2
+OR logMc and q; M and eta are used by many functions in the GW synthesis.</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<p>First method</p>
+<dl class="simple">
+<dt>m1: float</dt><dd><p>Mass of one object in binary in solar masses.</p>
+</dd>
+<dt>m2: float</dt><dd><p>Mass of other object in binary in solar masses.</p>
+</dd>
+</dl>
+<p>Second method</p>
+<dl class="simple">
+<dt>logMc: float</dt><dd><p>log10(the chirp mass of the binary in solar masses).</p>
+</dd>
+<dt>q: float</dt><dd><p>The mass ratio of the objects in the binary.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>(M,eta): tuple of floats</dt><dd><p>The total mass of the binary, followed by the symmetric mass ratio.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="startx">
+<h2>startx<a class="headerlink" href="#startx" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">startx(M,flow)</span></code></p>
+<p>Gives starting value/lower boundary for integration of post-Newtonian
+parameter, based on Buskirk et al. (2019) equation 22.</p>
+<div class="section" id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>M: float</dt><dd><p>Total mass of the binary, can be obtained from get_M_and_eta().</p>
+</dd>
+<dt>flow: float</dt><dd><p>Lower cutoff frequency for the gravitational waveform, which we usually
+set to be 10 Hz.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>value: float</dt><dd><p>The starting value for the post-Newtonian integration.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="endx">
+<h2>endx<a class="headerlink" href="#endx" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">endx(eta,merger_type)</span></code></p>
+<p>Gives ending value/upper boundary for integration of post-Newtonian
+parameter, based on Buskirk et al. (2019) equation 23.</p>
+<div class="section" id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>eta: float</dt><dd><p>Symmetric mass ratio of the binary, can be obtained from
+get_M_and_eta().</p>
+</dd>
+<dt>merger_type: string</dt><dd><p>‘BH’ for a BH-BH merger, ‘NS’ for a BH-NS or NS-NS merger</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>value: float</dt><dd><p>The ending value for the post-Newtonian integration.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="pnderiv">
+<h2>PNderiv<a class="headerlink" href="#pnderiv" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">PNderiv(x,M,eta)</span></code></p>
+<p>Encodes the differential equation for the post-Newtonian parameter that is
+integrated by x_integration(), based on Huerta et al. (2017) and Buskirk et
+al. (2019). This function should usually not be called directly, but rather
+by x_integration().</p>
+<div class="section" id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>x: float</dt><dd><p>The post-Newtonian parameter, the variable being integrated over.</p>
+</dd>
+<dt>M: float</dt><dd><p>Total mass of the binary, can be obtained from get_M_and_eta().</p>
+</dd>
+<dt>eta: float</dt><dd><p>Symmetric mass ratio of the binary, can be obtained from
+get_M_and_eta().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id6">
+<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>Mdxdt: float</dt><dd><p>The value of M * (dx/dt) for the input x, as given by the differential
+equation.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="pn-parameter-integration">
+<h2>PN_parameter_integration<a class="headerlink" href="#pn-parameter-integration" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">PN_parameter_integration(start,end,M,eta)</span></code></p>
+<p>Integrates the PNderiv() differential equation for the post-Newtonian
+parameter, x.</p>
+<div class="section" id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>start: float</dt><dd><p>The starting value/lower boundary of the integration, from startx().</p>
+</dd>
+<dt>end: float</dt><dd><p>The ending value/upper boundary of the integration, from endx().</p>
+</dd>
+<dt>M: float</dt><dd><p>Total mass of the binary, can be obtained from get_M_and_eta().</p>
+</dd>
+<dt>eta: float</dt><dd><p>Symmetric mass ratio of the binary, can be obtained from
+get_M_and_eta().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>[x,xtimes,dt]: list of lists of floats</dt><dd><p>First list is the series of values of the post-Newtonian parameter x
+that has been integrated, second list is the time corresponding to each
+value of x (data point), third list is the timestep between each pair
+of data points.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="inspiral-time-conversion">
+<h2>inspiral_time_conversion<a class="headerlink" href="#inspiral-time-conversion" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">inspiral_time_conversion(xtimes,M)</span></code></p>
+<p>Converting times in geometric units from x_integration() to times in real
+units.</p>
+<div class="section" id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>xtimes: list of floats</dt><dd><p>Times in geometric units of data points in the integration of the post-
+Newtonian parameter, from PN_parameter_integration().</p>
+</dd>
+<dt>M: float</dt><dd><p>Total mass of the binary, can be obtained from get_M_and_eta().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id10">
+<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>realtimes: list of floats</dt><dd><p>xtimes, but in seconds instead of geometric units.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="inspiral-phase-freq-integration">
+<h2>inspiral_phase_freq_integration<a class="headerlink" href="#inspiral-phase-freq-integration" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">inspiral_phase_freq_integration(x,dt,M)</span></code></p>
+<p>Integration of orbital phase and angular frequency for the inspiral, using
+the post-Newtonian parameter, based on Buskirk et al. (2019) equation 7.</p>
+<div class="section" id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>x: list of floats</dt><dd><p>Values of the post-Newtonian parameter over time, from
+PN_parameter_integration().</p>
+</dd>
+<dt>dt: list of floats</dt><dd><p>Timesteps in geometric units between each value of xtimes, from
+PN_parameter_integration().</p>
+</dd>
+<dt>M: float</dt><dd><p>Total mass of the binary, can be obtained from get_M_and_eta().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id12">
+<h3>Returns<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>[i_phase,omega,freq]: list of lists of floats</dt><dd><p>First list is the values of orbital phase at each timestep, second list
+is the angular frequency, third list is the frequency of the GW signal.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="radius-calculation">
+<h2>radius_calculation<a class="headerlink" href="#radius-calculation" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">radius_calculation(x,M,eta)</span></code></p>
+<p>Calculation of orbital radius (and time-derivative of radius) for the
+binary for each timestep during the inspiral, based on Buskirk et al.
+(2019).</p>
+<div class="section" id="id13">
+<h3>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>x: list of floats</dt><dd><p>Values of the post-Newtonian parameter over time, from
+PN_parameter_integration().</p>
+</dd>
+<dt>M: float</dt><dd><p>Total mass of the binary, can be obtained from get_M_and_eta().</p>
+</dd>
+<dt>eta: float</dt><dd><p>Symmetric mass ratio of the binary, can be obtained from
+get_M_and_eta().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id14">
+<h3>Returns<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>[r,rdot]: list of lists of floats</dt><dd><p>First list is the values of the orbital radius (in geometric units) at
+each timestep, second list is the time-derivative of the radius (used
+by strain calculations).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="a1-a2-calculation">
+<h2>a1_a2_calculation<a class="headerlink" href="#a1-a2-calculation" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">a1_a2_calculation(r,rdot,omega,D,M,eta)</span></code></p>
+<p>Calculation of A1 and A2, two coefficients used in the calculation of
+strain polarisations, based on Buskirk et al. (2019) equation 9.</p>
+<div class="section" id="id15">
+<h3>Parameters<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>r: list of floats</dt><dd><p>Values of the orbital radius over time, from radius_calculation().</p>
+</dd>
+<dt>rdot: list of floats</dt><dd><p>Values of the time-derivative of the radius, from radius_calculation().</p>
+</dd>
+<dt>omega: list of floats</dt><dd><p>Values of the angular frequency over time, from
+inspiral_phase_freq_integration().</p>
+</dd>
+<dt>D: float</dt><dd><p>Distance from the detector to the binary, in Mpc. IMPORTANT: if you
+want to feed the strain values into the SNR calculator, use the default
+distance of 100 Mpc here and instead set the distance when using the
+SNR functions.</p>
+</dd>
+<dt>M: float</dt><dd><p>Total mass of the binary, can be obtained from get_M_and_eta().</p>
+</dd>
+<dt>eta: float</dt><dd><p>Symmetric mass ratio of the binary, can be obtained from
+get_M_and_eta().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id16">
+<h3>Returns<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>[A1,A2]: list of lists of floats</dt><dd><p>The first list is the values  of the A1 parameter used in strain
+calculation over time, the second list is the A2 parameter.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="inspiral-strain-polarisations">
+<h2>inspiral_strain_polarisations<a class="headerlink" href="#inspiral-strain-polarisations" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">inspiral_strain_polarisations(A1,A2,i_phase)</span></code></p>
+<p>Calculating the values of the two polarisations of strain for the inspiral,
+using the coefficients from a1_a2_calculation().</p>
+<div class="section" id="id17">
+<h3>Parameters<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>A1: list of floats</dt><dd><p>Values of the first strain coefficient over time, from
+a1_a2_calculation().</p>
+</dd>
+<dt>A2: list of floats</dt><dd><p>Values of the second strain coefficient over time, from
+a1_a2_calculation().</p>
+</dd>
+<dt>i_phase: list of floats</dt><dd><p>Values of the orbital phase at each timestep, from
+inspiral_phase_freq_integration().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id18">
+<h3>Returns<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>[Aorth,Adiag]: list of lists of floats</dt><dd><p>The first list is the values of the orthogonal/plus polarisation of
+strain over time, the second list is the diagonal/cross polarisation.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="inspiral-strain-amplitude">
+<h2>inspiral_strain_amplitude<a class="headerlink" href="#inspiral-strain-amplitude" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">inspiral_strain_amplitude(Aorth,Adiag)</span></code></p>
+<p>Calculating the amplitude of the strain from the polarisations.</p>
+<div class="section" id="id19">
+<h3>Parameters<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>Aorth: list of floats</dt><dd><p>The values of the orthogonal/plus polarisation of strain over time,
+from inspiral_strain_polarisations().</p>
+</dd>
+<dt>Adiag: list of floats</dt><dd><p>The values of the diagonal/cross polarisation of strain over time, from
+inspiral_strain_polarisations().</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id20">
+<h3>Returns<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>i_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time (unitless).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="list-size-reducer">
+<h2>list_size_reducer<a class="headerlink" href="#list-size-reducer" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">list_size_reducer(reduction_factor,your_list)</span></code></p>
+<p>Optional function to reduce the size of the lists output by the inspiral
+functions (not the merger lists, as those are much shorter), in order to
+reduce filesize to conserve storage space.
+NOTES:
+The typical reduction factor we have used in our research using this code
+is 100.
+The inspiral lists used by the matching/merger portions are realtimes,
+omega, i_phase and i_amp so if you reduce one of these you should reduce
+all of them.</p>
+<div class="section" id="id21">
+<h3>Parameters<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>reduction_factor: int</dt><dd><p>The factor you want to reduce the list length by.</p>
+</dd>
+<dt>your_list: list</dt><dd><p>The list you want to reduce.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id22">
+<h3>Returns<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>reduced_list: list</dt><dd><p>your_list, in reduced form.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">inspiralfuns</a><ul>
+<li><a class="reference internal" href="#get-m-and-eta">get_M_and_eta</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#returns">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#startx">startx</a><ul>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
+<li><a class="reference internal" href="#id2">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#endx">endx</a><ul>
+<li><a class="reference internal" href="#id3">Parameters</a></li>
+<li><a class="reference internal" href="#id4">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pnderiv">PNderiv</a><ul>
+<li><a class="reference internal" href="#id5">Parameters</a></li>
+<li><a class="reference internal" href="#id6">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pn-parameter-integration">PN_parameter_integration</a><ul>
+<li><a class="reference internal" href="#id7">Parameters</a></li>
+<li><a class="reference internal" href="#id8">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspiral-time-conversion">inspiral_time_conversion</a><ul>
+<li><a class="reference internal" href="#id9">Parameters</a></li>
+<li><a class="reference internal" href="#id10">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspiral-phase-freq-integration">inspiral_phase_freq_integration</a><ul>
+<li><a class="reference internal" href="#id11">Parameters</a></li>
+<li><a class="reference internal" href="#id12">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#radius-calculation">radius_calculation</a><ul>
+<li><a class="reference internal" href="#id13">Parameters</a></li>
+<li><a class="reference internal" href="#id14">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a1-a2-calculation">a1_a2_calculation</a><ul>
+<li><a class="reference internal" href="#id15">Parameters</a></li>
+<li><a class="reference internal" href="#id16">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspiral-strain-polarisations">inspiral_strain_polarisations</a><ul>
+<li><a class="reference internal" href="#id17">Parameters</a></li>
+<li><a class="reference internal" href="#id18">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspiral-strain-amplitude">inspiral_strain_amplitude</a><ul>
+<li><a class="reference internal" href="#id19">Parameters</a></li>
+<li><a class="reference internal" href="#id20">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#list-size-reducer">list_size_reducer</a><ul>
+<li><a class="reference internal" href="#id21">Parameters</a></li>
+<li><a class="reference internal" href="#id22">Returns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/riroriro/inspiralfuns.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2021, Wouter van Zeist.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 3.4.3. &nbsp;
+    Last built 03 Mar 2021. <br/>
+  </p>
+</footer>
+  </body>
+</html>

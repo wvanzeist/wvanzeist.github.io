@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>horizondistfuns &#8212; riroriro v</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="detectabilityfuns" href="detectabilityfuns.html" />
+    <link rel="prev" title="snrcalculatorfuns" href="snrcalculatorfuns.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">riroriro</span><span id="logotext2"></span><span id="logotext3">:docs</span></a>
+  <ul>
+    
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="detectabilityfuns.html" title="detectabilityfuns">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="snrcalculatorfuns.html" title="snrcalculatorfuns">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">riroriro v</a>
+	 &#187;
+      </li>
+      
+      <li>horizondistfuns</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="horizondistfuns">
+<h1>horizondistfuns<a class="headerlink" href="#horizondistfuns" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the horizondistfuns module, which consists of parts of the procedure for calculating the horizon distance of a gravitational waveform (from gwexporter or otherwise), collected into modular functions.</p>
+<div class="section" id="compact-snr-calculation">
+<h2>compact_SNR_calculation<a class="headerlink" href="#compact-snr-calculation" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">compact_SNR_calculation(inputarray,findchirp_array,noisearray_list,method,d)</span></code></p>
+<p>Runs through all of the functions of snrcalculatorfuns to obtain a SNR from
+an individual detector. This function is mainly included not to be called
+directly, but rather by horizon_distance_calculation().</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform,
+in the format used by waveform_exporter() in gwexporter.</p>
+</dd>
+<dt>findchirp_array: numpy.ndarray</dt><dd><p>The array output by FINDCHIRP. The second column is frequency, the
+fourth is (Fourier-transformed) strain amplitude, the other columns
+are irrelevant. A grid of sample findchirp_arrays can be found at
+<a class="reference external" href="https://drive.google.com/drive/folders/12TYxYKtBL1iuFHG_ySFhS12Aqv4JHGOr">https://drive.google.com/drive/folders/12TYxYKtBL1iuFHG_ySFhS12Aqv4JHGOr</a></p>
+</dd>
+<dt>noisearray_list: list of numpy.ndarrays</dt><dd><p>Each item in this list should be an array describing the noise spectrum
+of a detector; in each noise spectrum, it is assumed that frequency
+values are in the first column and ASD noise levels in the second.</p>
+</dd>
+<dt>method: str</dt><dd><p>If ‘quad’, returns the quadrature SNR across the detectors in
+noisearray_list. If ‘mean’, returns the mean of the SNRs with each
+individual detector (simulating one random detector in operation). If
+only one detector is included in noisearray_list, these methods are
+equivalent.</p>
+</dd>
+<dt>d: float</dt><dd><p>The luminosity distance to the merging binary, in Mpc.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>final_SNR: float</dt><dd><p>The SNR of the simulated gravitational waveform, for the detectors in
+noisearray and assuming optimal alignment.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="horizon-distance-calculation">
+<h2>horizon_distance_calculation<a class="headerlink" href="#horizon-distance-calculation" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">horizon_distance_calculation(inputarray,findchirp_array,noisearray_list,method)</span></code></p>
+<p>Calculates the horizon distance (maximum distance at which something can
+be observed) given optimal alignment for a given merger.</p>
+<div class="section" id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform,
+in the format used by waveform_exporter() in gwexporter.</p>
+</dd>
+<dt>findchirp_array: numpy.ndarray</dt><dd><p>The array output by FINDCHIRP. The second column is frequency, the
+fourth is (Fourier-transformed) strain amplitude, the other columns
+are irrelevant. A grid of sample findchirp_arrays can be found at
+<a class="reference external" href="https://drive.google.com/drive/folders/12TYxYKtBL1iuFHG_ySFhS12Aqv4JHGOr">https://drive.google.com/drive/folders/12TYxYKtBL1iuFHG_ySFhS12Aqv4JHGOr</a></p>
+</dd>
+<dt>noisearray_list: list of numpy.ndarrays</dt><dd><p>Each item in this list should be an array describing the noise spectrum
+of a detector; in each noise spectrum, it is assumed that frequency
+values are in the first column and ASD noise levels in the second.</p>
+</dd>
+<dt>method: str</dt><dd><p>If ‘quad’, uses the quadrature SNR across the detectors in
+noisearray_list. If ‘mean’, uses the mean of the SNRs with each
+individual detector (simulating one random detector in operation). If
+only one detector is included in noisearray_list, these methods are
+equivalent.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>horizon_dist: float</dt><dd><p>The horizon distance of the given merger, for the given detector(s).</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">horizondistfuns</a><ul>
+<li><a class="reference internal" href="#compact-snr-calculation">compact_SNR_calculation</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#returns">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#horizon-distance-calculation">horizon_distance_calculation</a><ul>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
+<li><a class="reference internal" href="#id2">Returns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/riroriro/horizondistfuns.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2021, Wouter van Zeist.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 3.4.3. &nbsp;
+    Last built 03 Mar 2021. <br/>
+  </p>
+</footer>
+  </body>
+</html>
