@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>detectabilityfuns &#8212; riroriro 1.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
@@ -41,24 +42,24 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="detectabilityfuns">
+  <section id="detectabilityfuns">
 <h1>detectabilityfuns<a class="headerlink" href="#detectabilityfuns" title="Permalink to this headline">¶</a></h1>
 <p>This is the documentation for the detectabilityfuns module, which consists of parts of the procedure for calculating the detectability fraction of a merger given its optimal-alignment SNR, collected into modular functions.</p>
-<div class="section" id="cdf-generator">
+<section id="cdf-generator">
 <h2>cdf_generator<a class="headerlink" href="#cdf-generator" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">cdf_generator(N=10**6)</span></code></p>
 <p>Generates the cumulative distribution function (CDF) of the projection
 function Theta, for use with detectability_calculator(), based on Finn
 (1996), Belczynski et al. (2013), Belczynski et al. (2014).</p>
-<div class="section" id="parameters">
+<section id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>N: int</dt><dd><p>The number of random samples of Theta you want to take to build the
 CDF. Default: 10**6.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="returns">
+</section>
+<section id="returns">
 <h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>Theta_CDF: function</dt><dd><p>The CDF of the projection function Theta.</p>
@@ -68,15 +69,15 @@ CDF. Default: 10**6.</p>
 <dt>max_CDF: float</dt><dd><p>The upper boundary of the range over which Theta_CDF is defined.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="detectability-calculator">
+</section>
+</section>
+<section id="detectability-calculator">
 <h2>detectability_calculator<a class="headerlink" href="#detectability-calculator" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">detectability_calculator(Theta_CDF,min_CDF,max_CDF,SNR_in)</span></code></p>
 <p>Given the optimal-alignment SNR of a merger, this function returns the
 fraction of arbitrary orientations in which the merger would be expected to
 be observable (i.e. have a SNR above 8).</p>
-<div class="section" id="id1">
+<section id="id1">
 <h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>Theta_CDF: function</dt><dd><p>The CDF of the projection function Theta, from cdf_generator().</p>
@@ -91,36 +92,36 @@ cdf_generator().</p>
 from snrcalculatorfuns.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>det: float</dt><dd><p>The detectability fraction of the merger.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="specific-orientation-snr">
+</section>
+</section>
+<section id="specific-orientation-snr">
 <h2>specific_orientation_SNR<a class="headerlink" href="#specific-orientation-snr" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">specific_orientation_SNR(theta,phi,iota,psi,SNR_in,angle_unit='rad')</span></code></p>
 <p>Given the optimal-alignment SNR of a merger, this function returns the SNR
 that would result if the detector and binary had a specific orientation/
 alignment, specified by four angles as in Finn (1996), Belczynski et al.
 (2013), Belczynski et al. (2014).</p>
-<div class="section" id="id3">
+<section id="id3">
 <h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
-<dt>theta: float</dt><dd><p>The ecliptic latitude, one of the angles describing the direction of
+<dt>theta: float</dt><dd><p>The relative latitude, one of the angles describing the direction of
 the line of sight to the gravitational wave source relative to the axes
 of the detector’s arms (sky-location coordinates of the binary). Ranges
-from -π/2 to π/2 rad (-90 to 90 deg).</p>
+from 0 to π rad (180 deg).</p>
 </dd>
-<dt>phi: float</dt><dd><p>The ecliptic longitude, one of the angles describing the direction of
+<dt>phi: float</dt><dd><p>The relative longitude, one of the angles describing the direction of
 the line of sight to the gravitational wave source relative to the axes
 of the detector’s arms (sky-location coordinates of the binary). Ranges
 from 0 to 2π rad (360 deg).</p>
 </dd>
-<dt>iota: float</dt><dd><p>The inclination angle of the binary. Ranges from 0 to π/2 rad (90 deg).</p>
+<dt>iota: float</dt><dd><p>The inclination angle of the binary. Ranges from 0 to π rad (180 deg).</p>
 </dd>
 <dt>psi: float</dt><dd><p>The polarisation angle of the binary. Ranges from 0 to π (180 deg).</p>
 </dd>
@@ -131,17 +132,17 @@ from snrcalculatorfuns.</p>
 default is ‘rad’.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>SNR_out: float</dt><dd><p>The SNR of the merger in question at the specific orientation given by
 the input angles.</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -217,7 +218,7 @@ the input angles.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Wouter van Zeist.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
     </div>
   </body>
 </html>

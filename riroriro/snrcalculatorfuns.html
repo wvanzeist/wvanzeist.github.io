@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>snrcalculatorfuns &#8212; riroriro 1.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
@@ -41,35 +42,35 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="snrcalculatorfuns">
+  <section id="snrcalculatorfuns">
 <h1>snrcalculatorfuns<a class="headerlink" href="#snrcalculatorfuns" title="Permalink to this headline">¶</a></h1>
 <p>This is the documentation for the snrcalculatorfuns module, which consists of parts of the procedure for calculating the SNR of a gravitational waveform (from gwexporter or otherwise), collected into modular functions.</p>
-<div class="section" id="polynomial-redshift">
+<section id="polynomial-redshift">
 <h2>polynomial_redshift<a class="headerlink" href="#polynomial-redshift" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">polynomial_redshift(d)</span></code></p>
 <p>Polynomial approximation of calculating redshift corresponding to a given
 distance.</p>
-<div class="section" id="parameters">
+<section id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>d: float</dt><dd><p>A luminosity distance, in Mpc.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="returns">
+</section>
+<section id="returns">
 <h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>z: float</dt><dd><p>The redshift corresponding to the input distance.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="redshift-distance-adjustment">
+</section>
+</section>
+<section id="redshift-distance-adjustment">
 <h2>redshift_distance_adjustment<a class="headerlink" href="#redshift-distance-adjustment" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">redshift_distance_adjustment(inputarray,d,z)</span></code></p>
 <p>Adjusts the frequencies and amplitudes in the input gravitational waveform
 to account for the effects of distance/redshift.</p>
-<div class="section" id="id1">
+<section id="id1">
 <h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform,
@@ -80,45 +81,45 @@ in the format used by waveform_exporter() in gwexporter.</p>
 <dt>z: float</dt><dd><p>The redshift corresponding to the input distance.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>adjustedarray: numpy.ndarray</dt><dd><p>inputarray, but with the frequency and amplitudes adjusted.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="frequency-limits">
+</section>
+</section>
+<section id="frequency-limits">
 <h2>frequency_limits<a class="headerlink" href="#frequency-limits" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">frequency_limits(inputarray)</span></code></p>
 <p>Calculates the upper and lower limits of the frequency of the gravitational
 waveform in inputarray, which are used by amplitude_interpolation().</p>
-<div class="section" id="id3">
+<section id="id3">
 <h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform;
 should have been adjusted by redshift_distance_adjustment().</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>(freqmax,freqmin): tuple of floats</dt><dd><p>The upper and lower limits of the waveform signal frequency,
 respectively.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="findchirp-fourier">
+</section>
+</section>
+<section id="findchirp-fourier">
 <h2>findchirp_fourier<a class="headerlink" href="#findchirp-fourier" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">findchirp_fourier(inputarray,findchirp_array,d,z)</span></code></p>
 <p>Approximation of a Fourier transform on the gravitational waveform data,
 using the frequency spectrum output by the simpler model FINDCHIRP (Allen
 et al., 2012) for calibration.
 NOTE: May in the future be replaced by something fft-based.</p>
-<div class="section" id="id5">
+<section id="id5">
 <h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform;
@@ -134,24 +135,24 @@ are irrelevant. A grid of sample findchirp_arrays can be found at
 <dt>z: float</dt><dd><p>The redshift corresponding to the input distance.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h3>Returns<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>fourieramp: list</dt><dd><p>Fourier-transformed/calibrated amplitudes at each frequency value in
 inputarray.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="amplitude-interpolation">
+</section>
+</section>
+<section id="amplitude-interpolation">
 <h2>amplitude_interpolation<a class="headerlink" href="#amplitude-interpolation" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">amplitude_interpolation(inputarray,fourieramp,noisearray,freqmax,freqmin)</span></code></p>
 <p>The simulated gravitational waveform data and the detector noise spectrum
 are assumed to have amplitude data at different sets of frequencies, so
 this function uses scipy’s interp1d to calculate the waveform amplitude
 values at the frequencies used by the detector data.</p>
-<div class="section" id="id7">
+<section id="id7">
 <h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>inputarray: numpy.ndarray</dt><dd><p>The time, frequency and amplitude data of the gravitational waveform;
@@ -171,23 +172,23 @@ frequency_limits().</p>
 frequency_limits().</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id8">
+</section>
+<section id="id8">
 <h3>Returns<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>noise_freq_amp: list</dt><dd><p>Waveform amplitudes as in fourieramp, but over the set of frequencies
 in noisearray rather than those in inputarray.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="individual-detector-snr">
+</section>
+</section>
+<section id="individual-detector-snr">
 <h2>individual_detector_SNR<a class="headerlink" href="#individual-detector-snr" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">individual_detector_SNR(noisearray,noise_freq_amp)</span></code></p>
 <p>Calculates the single-detector optimal-alignment SNR by comparing the
 waveform frequency spectrum and detector noise spectrum using the method of
 Barrett et al. (2018).</p>
-<div class="section" id="id9">
+<section id="id9">
 <h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>noisearray: numpy.ndarray</dt><dd><p>Data on the noise spectrum of the detector; it is assumed that
@@ -198,17 +199,17 @@ second.</p>
 frequencies of noisearray, from amplitude_interpolation().</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id10">
+</section>
+<section id="id10">
 <h3>Returns<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>ind_SNR: float</dt><dd><p>The SNR of the simulated gravitational waveform, for the detector in
 noisearray and assuming optimal alignment.</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -299,7 +300,7 @@ noisearray and assuming optimal alignment.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Wouter van Zeist.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
     </div>
   </body>
 </html>

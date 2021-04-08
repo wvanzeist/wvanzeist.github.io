@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>mergersecondfuns &#8212; riroriro 1.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
@@ -41,15 +42,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="mergersecondfuns">
+  <section id="mergersecondfuns">
 <h1>mergersecondfuns<a class="headerlink" href="#mergersecondfuns" title="Permalink to this headline">¶</a></h1>
 <p>This is the documentation for the mergersecondfuns module, which consists of the post-matching parts of the procedure for simulating the merger/ringdown portions of gravitational waves from binary black holes, collected into modular functions.</p>
-<div class="section" id="merger-phase-calculation">
+<section id="merger-phase-calculation">
 <h2>merger_phase_calculation<a class="headerlink" href="#merger-phase-calculation" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">merger_phase_calculation(min_switch_ind,final_i_index,i_phase,m_omega)</span></code></p>
 <p>Calculation of the orbital phase for the merger/ringdown portion, based
 on Buskirk et al. (2019) equation 21.</p>
-<div class="section" id="parameters">
+<section id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
@@ -66,21 +67,21 @@ inspiral_phase_freq_integration() in inspiralfuns.</p>
 from merger_freq_calculation() in mergerfirstfuns.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="returns">
+</section>
+<section id="returns">
 <h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>m_phase: list of floats</dt><dd><p>Values of orbital phase over time for the merger/ringdown portion.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="phase-stitching">
+</section>
+</section>
+<section id="phase-stitching">
 <h2>phase_stitching<a class="headerlink" href="#phase-stitching" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">phase_stitching(final_i_index,i_phase,m_phase)</span></code></p>
 <p>Stitching together the inspiral and merger/ringdown portions of the phase
 lists to give a combined list with the correct matching.</p>
-<div class="section" id="id1">
+<section id="id1">
 <h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
@@ -93,22 +94,22 @@ inspiral_phase_freq_integration() in inspiralfuns.</p>
 merger_phase_calculation().</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>i_m_phase: list of floats</dt><dd><p>Values of orbital phase over time for the entire duration of the
 gravitational waveform.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="merger-strain-amplitude">
+</section>
+</section>
+<section id="merger-strain-amplitude">
 <h2>merger_strain_amplitude<a class="headerlink" href="#merger-strain-amplitude" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">merger_strain_amplitude(min_switch_ind,final_i_index,alpha,i_amp,m_omega,fhat,fhatdot)</span></code></p>
 <p>Calculating the amplitude of strain for the merger/ringdown portion, based
 on Buskirk et al. (2019) equation 16.</p>
-<div class="section" id="id3">
+<section id="id3">
 <h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
@@ -133,22 +134,22 @@ from merger_freq_calculation() in mergerfirstfuns.</p>
 fhat_differentiation() in mergerfirstfuns.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>m_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the
 merger/ringdown portion.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="amplitude-stitching">
+</section>
+</section>
+<section id="amplitude-stitching">
 <h2>amplitude_stitching<a class="headerlink" href="#amplitude-stitching" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">amplitude_stitching(final_i_index,i_amp,m_amp)</span></code></p>
 <p>Stitching together the inspiral and merger/ringdown portions of the
 amplitude lists to give a combined list with the correct matching.</p>
-<div class="section" id="id5">
+<section id="id5">
 <h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
@@ -161,17 +162,17 @@ portion, from inspiral_strain_amplitude() in inspiralfuns.</p>
 merger/ringdown portion, from merger_strain_amplitude().</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h3>Returns<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>i_m_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the entire
 duration of the gravitational waveform.</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -252,7 +253,7 @@ duration of the gravitational waveform.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Wouter van Zeist.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
     </div>
   </body>
 </html>
