@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>mergersecondfuns &#8212; riroriro 1.0.1 documentation</title>
+    <title>mergersecondfuns &#8212; riroriro 1.0.2 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     
@@ -32,7 +32,7 @@
         <li class="right" >
           <a href="matchingfuns.html" title="matchingfuns"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">riroriro 1.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">riroriro 1.0.2 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mergersecondfuns</a></li> 
       </ul>
     </div>  
@@ -172,6 +172,73 @@ duration of the gravitational waveform.</p>
 </dl>
 </section>
 </section>
+<section id="merger-polarisations">
+<h2>merger_polarisations<a class="headerlink" href="#merger-polarisations" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">merger_polarisations(final_i_index,m_amp,m_phase,i_Aorth)</span></code></p>
+<p>Calculating the values of the two polarisations of strain for the merger.</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
+ringdown, from final_i_index_finder() in matchingfuns.</p>
+</dd>
+<dt>m_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the
+merger/ringdown portion, from merger_strain_amplitude().</p>
+</dd>
+<dt>m_phase: list of floats</dt><dd><p>Values of orbital phase over time for the merger/ringdown portion, from
+merger_phase_calculation().</p>
+</dd>
+<dt>i_Aorth: list of floats</dt><dd><p>The values of the orthogonal/plus polarisation of strain over time for
+the inspiral portion, from inspiral_strain_polarisations() in
+inspiralfuns.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>[m_Aorth,m_Adiag]: list of lists of floats</dt><dd><p>The first list is the values of the orthogonal/plus polarisation of
+strain over time, the second list is the diagonal/cross polarisation.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="polarisation-stitching">
+<h2>polarisation_stitching<a class="headerlink" href="#polarisation-stitching" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">polarisation_stitching(final_i_index,i_Aorth,i_Adiag,m_Aorth,m_Adiag)</span></code></p>
+<p>Stitching together the inspiral and merger/ringdown portions of the
+polarisation lists to give combined lists with the correct matching.</p>
+<section id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
+ringdown, from final_i_index_finder() in matchingfuns.</p>
+</dd>
+<dt>i_Aorth: list of floats</dt><dd><p>The values of the orthogonal/plus polarisation of strain over time for
+the inspiral portion, from inspiral_strain_polarisations() in
+inspiralfuns.</p>
+</dd>
+<dt>i_Adiag: list of floats</dt><dd><p>The values of the diagonal/cross polarisation of strain over time for
+the inspiral portion, from inspiral_strain_polarisations() in
+inspiralfuns.</p>
+</dd>
+<dt>m_Aorth: list of floats</dt><dd><p>The values of the orthogonal/plus polarisation of strain over time for
+the merger/ringdown portion, from merger_polarisations().</p>
+</dd>
+<dt>m_Adiag: list of floats</dt><dd><p>The values of the diagonal/cross polarisation of strain over time for
+the merger/ringdown portion, from merger_polarisations().</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>[i_m_Aorth,i_m_Adiag]: list of lists of floats</dt><dd><p>The first list is the combined orthogonal/plus polarisation values, the
+second list is the combined diagonal/cross polarisation values.</p>
+</dd>
+</dl>
+</section>
+</section>
 </section>
 
 
@@ -202,6 +269,16 @@ duration of the gravitational waveform.</p>
 <li><a class="reference internal" href="#amplitude-stitching">amplitude_stitching</a><ul>
 <li><a class="reference internal" href="#id5">Parameters</a></li>
 <li><a class="reference internal" href="#id6">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#merger-polarisations">merger_polarisations</a><ul>
+<li><a class="reference internal" href="#id7">Parameters</a></li>
+<li><a class="reference internal" href="#id8">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#polarisation-stitching">polarisation_stitching</a><ul>
+<li><a class="reference internal" href="#id9">Parameters</a></li>
+<li><a class="reference internal" href="#id10">Returns</a></li>
 </ul>
 </li>
 </ul>
@@ -247,7 +324,7 @@ duration of the gravitational waveform.</p>
         <li class="right" >
           <a href="matchingfuns.html" title="matchingfuns"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">riroriro 1.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">riroriro 1.0.2 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mergersecondfuns</a></li> 
       </ul>
     </div>
