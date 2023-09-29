@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>inspiralfuns &#8212; riroriro 1.0.2 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
@@ -43,15 +44,15 @@
           <div class="body" role="main">
             
   <section id="inspiralfuns">
-<h1>inspiralfuns<a class="headerlink" href="#inspiralfuns" title="Permalink to this headline">¶</a></h1>
+<h1>inspiralfuns<a class="headerlink" href="#inspiralfuns" title="Permalink to this heading">¶</a></h1>
 <p>This is the documentation for the inspiralfuns module, which consists of parts of the procedure for simulating the inspiral portions of gravitational waves, collected into modular functions.</p>
 <section id="get-m-and-eta">
-<h2>get_M_and_eta<a class="headerlink" href="#get-m-and-eta" title="Permalink to this headline">¶</a></h2>
+<h2>get_M_and_eta<a class="headerlink" href="#get-m-and-eta" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">get_M_and_eta(**kwargs)</span></code></p>
 <p>Gives total mass (M) and symmetric mass ratio (eta) from either m1 and m2
 OR logMc and q; M and eta are used by many functions in the GW synthesis.</p>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
 <p>First method</p>
 <dl class="simple">
 <dt>m1: float</dt><dd><p>Mass of one object in binary in solar masses.</p>
@@ -68,7 +69,7 @@ OR logMc and q; M and eta are used by many functions in the GW synthesis.</p>
 </dl>
 </section>
 <section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>(M,eta): tuple of floats</dt><dd><p>The total mass of the binary, followed by the symmetric mass ratio.</p>
 </dd>
@@ -76,12 +77,12 @@ OR logMc and q; M and eta are used by many functions in the GW synthesis.</p>
 </section>
 </section>
 <section id="startx">
-<h2>startx<a class="headerlink" href="#startx" title="Permalink to this headline">¶</a></h2>
+<h2>startx<a class="headerlink" href="#startx" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">startx(M,flow)</span></code></p>
 <p>Gives starting value/lower boundary for integration of post-Newtonian
 parameter, based on Buskirk et al. (2019) equation 22.</p>
 <section id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>M: float</dt><dd><p>Total mass of the binary, can be obtained from get_M_and_eta().</p>
 </dd>
@@ -91,7 +92,7 @@ set to be 10 Hz.</p>
 </dl>
 </section>
 <section id="id2">
-<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>value: float</dt><dd><p>The starting value for the post-Newtonian integration.</p>
 </dd>
@@ -99,12 +100,12 @@ set to be 10 Hz.</p>
 </section>
 </section>
 <section id="endx">
-<h2>endx<a class="headerlink" href="#endx" title="Permalink to this headline">¶</a></h2>
+<h2>endx<a class="headerlink" href="#endx" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">endx(eta,merger_type)</span></code></p>
 <p>Gives ending value/upper boundary for integration of post-Newtonian
 parameter, based on Buskirk et al. (2019) equation 23.</p>
 <section id="id3">
-<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>eta: float</dt><dd><p>Symmetric mass ratio of the binary, can be obtained from
 get_M_and_eta().</p>
@@ -114,7 +115,7 @@ get_M_and_eta().</p>
 </dl>
 </section>
 <section id="id4">
-<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>value: float</dt><dd><p>The ending value for the post-Newtonian integration.</p>
 </dd>
@@ -122,14 +123,14 @@ get_M_and_eta().</p>
 </section>
 </section>
 <section id="pnderiv">
-<h2>PNderiv<a class="headerlink" href="#pnderiv" title="Permalink to this headline">¶</a></h2>
+<h2>PNderiv<a class="headerlink" href="#pnderiv" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">PNderiv(x,M,eta)</span></code></p>
 <p>Encodes the differential equation for the post-Newtonian parameter that is
 integrated by x_integration(), based on Huerta et al. (2017) and Buskirk et
 al. (2019). This function should usually not be called directly, but rather
 by x_integration().</p>
 <section id="id5">
-<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>x: float</dt><dd><p>The post-Newtonian parameter, the variable being integrated over.</p>
 </dd>
@@ -141,7 +142,7 @@ get_M_and_eta().</p>
 </dl>
 </section>
 <section id="id6">
-<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>Mdxdt: float</dt><dd><p>The value of M * (dx/dt) for the input x, as given by the differential
 equation.</p>
@@ -150,12 +151,12 @@ equation.</p>
 </section>
 </section>
 <section id="pn-parameter-integration">
-<h2>PN_parameter_integration<a class="headerlink" href="#pn-parameter-integration" title="Permalink to this headline">¶</a></h2>
+<h2>PN_parameter_integration<a class="headerlink" href="#pn-parameter-integration" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">PN_parameter_integration(start,end,M,eta)</span></code></p>
 <p>Integrates the PNderiv() differential equation for the post-Newtonian
 parameter, x.</p>
 <section id="id7">
-<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>start: float</dt><dd><p>The starting value/lower boundary of the integration, from startx().</p>
 </dd>
@@ -169,7 +170,7 @@ get_M_and_eta().</p>
 </dl>
 </section>
 <section id="id8">
-<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>[x,xtimes,dt]: list of lists of floats</dt><dd><p>First list is the series of values of the post-Newtonian parameter x
 that has been integrated, second list is the time corresponding to each
@@ -180,12 +181,12 @@ of data points.</p>
 </section>
 </section>
 <section id="inspiral-time-conversion">
-<h2>inspiral_time_conversion<a class="headerlink" href="#inspiral-time-conversion" title="Permalink to this headline">¶</a></h2>
+<h2>inspiral_time_conversion<a class="headerlink" href="#inspiral-time-conversion" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">inspiral_time_conversion(xtimes,M)</span></code></p>
 <p>Converting times in geometric units from x_integration() to times in real
 units.</p>
 <section id="id9">
-<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>xtimes: list of floats</dt><dd><p>Times in geometric units of data points in the integration of the post-
 Newtonian parameter, from PN_parameter_integration().</p>
@@ -195,7 +196,7 @@ Newtonian parameter, from PN_parameter_integration().</p>
 </dl>
 </section>
 <section id="id10">
-<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>realtimes: list of floats</dt><dd><p>xtimes, but in seconds instead of geometric units.</p>
 </dd>
@@ -203,12 +204,12 @@ Newtonian parameter, from PN_parameter_integration().</p>
 </section>
 </section>
 <section id="inspiral-phase-freq-integration">
-<h2>inspiral_phase_freq_integration<a class="headerlink" href="#inspiral-phase-freq-integration" title="Permalink to this headline">¶</a></h2>
+<h2>inspiral_phase_freq_integration<a class="headerlink" href="#inspiral-phase-freq-integration" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">inspiral_phase_freq_integration(x,dt,M)</span></code></p>
 <p>Integration of orbital phase and angular frequency for the inspiral, using
 the post-Newtonian parameter, based on Buskirk et al. (2019) equation 7.</p>
 <section id="id11">
-<h3>Parameters<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>x: list of floats</dt><dd><p>Values of the post-Newtonian parameter over time, from
 PN_parameter_integration().</p>
@@ -221,7 +222,7 @@ PN_parameter_integration().</p>
 </dl>
 </section>
 <section id="id12">
-<h3>Returns<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>[i_phase,omega,freq]: list of lists of floats</dt><dd><p>First list is the values of orbital phase at each timestep, second list
 is the angular frequency, third list is the frequency of the GW signal.</p>
@@ -230,13 +231,13 @@ is the angular frequency, third list is the frequency of the GW signal.</p>
 </section>
 </section>
 <section id="radius-calculation">
-<h2>radius_calculation<a class="headerlink" href="#radius-calculation" title="Permalink to this headline">¶</a></h2>
+<h2>radius_calculation<a class="headerlink" href="#radius-calculation" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">radius_calculation(x,M,eta)</span></code></p>
 <p>Calculation of orbital radius (and time-derivative of radius) for the
 binary for each timestep during the inspiral, based on Buskirk et al.
 (2019).</p>
 <section id="id13">
-<h3>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id13" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>x: list of floats</dt><dd><p>Values of the post-Newtonian parameter over time, from
 PN_parameter_integration().</p>
@@ -249,7 +250,7 @@ get_M_and_eta().</p>
 </dl>
 </section>
 <section id="id14">
-<h3>Returns<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id14" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>[r,rdot]: list of lists of floats</dt><dd><p>First list is the values of the orbital radius (in geometric units) at
 each timestep, second list is the time-derivative of the radius (used
@@ -259,12 +260,12 @@ by strain calculations).</p>
 </section>
 </section>
 <section id="a1-a2-calculation">
-<h2>a1_a2_calculation<a class="headerlink" href="#a1-a2-calculation" title="Permalink to this headline">¶</a></h2>
+<h2>a1_a2_calculation<a class="headerlink" href="#a1-a2-calculation" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">a1_a2_calculation(r,rdot,omega,D,M,eta)</span></code></p>
 <p>Calculation of A1 and A2, two coefficients used in the calculation of
 strain polarisations, based on Buskirk et al. (2019) equation 9.</p>
 <section id="id15">
-<h3>Parameters<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id15" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>r: list of floats</dt><dd><p>Values of the orbital radius over time, from radius_calculation().</p>
 </dd>
@@ -286,7 +287,7 @@ get_M_and_eta().</p>
 </dl>
 </section>
 <section id="id16">
-<h3>Returns<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id16" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>[A1,A2]: list of lists of floats</dt><dd><p>The first list is the values  of the A1 parameter used in strain
 calculation over time, the second list is the A2 parameter.</p>
@@ -295,12 +296,12 @@ calculation over time, the second list is the A2 parameter.</p>
 </section>
 </section>
 <section id="inspiral-strain-polarisations">
-<h2>inspiral_strain_polarisations<a class="headerlink" href="#inspiral-strain-polarisations" title="Permalink to this headline">¶</a></h2>
+<h2>inspiral_strain_polarisations<a class="headerlink" href="#inspiral-strain-polarisations" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">inspiral_strain_polarisations(A1,A2,i_phase)</span></code></p>
 <p>Calculating the values of the two polarisations of strain for the inspiral,
 using the coefficients from a1_a2_calculation().</p>
 <section id="id17">
-<h3>Parameters<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id17" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>A1: list of floats</dt><dd><p>Values of the first strain coefficient over time, from
 a1_a2_calculation().</p>
@@ -314,7 +315,7 @@ inspiral_phase_freq_integration().</p>
 </dl>
 </section>
 <section id="id18">
-<h3>Returns<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id18" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>[Aorth,Adiag]: list of lists of floats</dt><dd><p>The first list is the values of the orthogonal/plus polarisation of
 strain over time, the second list is the diagonal/cross polarisation.</p>
@@ -323,11 +324,11 @@ strain over time, the second list is the diagonal/cross polarisation.</p>
 </section>
 </section>
 <section id="inspiral-strain-amplitude">
-<h2>inspiral_strain_amplitude<a class="headerlink" href="#inspiral-strain-amplitude" title="Permalink to this headline">¶</a></h2>
+<h2>inspiral_strain_amplitude<a class="headerlink" href="#inspiral-strain-amplitude" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">inspiral_strain_amplitude(Aorth,Adiag)</span></code></p>
 <p>Calculating the amplitude of the strain from the polarisations.</p>
 <section id="id19">
-<h3>Parameters<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id19" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>Aorth: list of floats</dt><dd><p>The values of the orthogonal/plus polarisation of strain over time,
 from inspiral_strain_polarisations().</p>
@@ -338,7 +339,7 @@ inspiral_strain_polarisations().</p>
 </dl>
 </section>
 <section id="id20">
-<h3>Returns<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id20" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>i_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time (unitless).</p>
 </dd>
@@ -346,7 +347,7 @@ inspiral_strain_polarisations().</p>
 </section>
 </section>
 <section id="list-size-reducer">
-<h2>list_size_reducer<a class="headerlink" href="#list-size-reducer" title="Permalink to this headline">¶</a></h2>
+<h2>list_size_reducer<a class="headerlink" href="#list-size-reducer" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">list_size_reducer(reduction_factor,your_list)</span></code></p>
 <p>Optional function to reduce the size of the lists output by the inspiral
 functions (not the merger lists, as those are much shorter), in order to
@@ -358,7 +359,7 @@ The inspiral lists used by the matching/merger portions are realtimes,
 omega, i_phase and i_amp so if you reduce one of these you should reduce
 all of them.</p>
 <section id="id21">
-<h3>Parameters<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id21" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>reduction_factor: int</dt><dd><p>The factor you want to reduce the list length by.</p>
 </dd>
@@ -367,7 +368,7 @@ all of them.</p>
 </dl>
 </section>
 <section id="id22">
-<h3>Returns<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id22" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>reduced_list: list</dt><dd><p>your_list, in reduced form.</p>
 </dd>
@@ -383,8 +384,9 @@ all of them.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">inspiralfuns</a><ul>
 <li><a class="reference internal" href="#get-m-and-eta">get_M_and_eta</a><ul>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -450,12 +452,17 @@ all of them.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">riroriro Documentation</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="mergerfirstfuns.html"
-                        title="next chapter">mergerfirstfuns</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">riroriro Documentation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="mergerfirstfuns.html"
+                          title="next chapter">mergerfirstfuns</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -467,12 +474,12 @@ all of them.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -495,7 +502,7 @@ all of them.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Wouter van Zeist.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

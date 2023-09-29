@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>matchingfuns &#8212; riroriro 1.0.2 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
@@ -43,10 +44,10 @@
           <div class="body" role="main">
             
   <section id="matchingfuns">
-<h1>matchingfuns<a class="headerlink" href="#matchingfuns" title="Permalink to this headline">¶</a></h1>
+<h1>matchingfuns<a class="headerlink" href="#matchingfuns" title="Permalink to this heading">¶</a></h1>
 <p>This is the documentation for the matchingfuns module, which consists of parts of the procedure for matching together the inspiral and merger/ringdown portions of the gravitational waveforms of binary black holes, collected into modular functions.</p>
 <section id="mqdiff">
-<h2>MQdiff<a class="headerlink" href="#mqdiff" title="Permalink to this headline">¶</a></h2>
+<h2>MQdiff<a class="headerlink" href="#mqdiff" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">MQdiff(i,i_time,i_omega,m_time,m_omega)</span></code></p>
 <p>A function that calculates a “matching quantity” that is subsequently used
 to determine the best offset and switching point for matching together the
@@ -54,7 +55,7 @@ inspiral and merger/ringdown portions (the precise method was revised
 several times). This function should usually not be called directly, but
 rather by min_switch_ind_finder().</p>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>i: int</dt><dd><p>An index in the range of merger/ringdown data points.</p>
 </dd>
@@ -73,7 +74,7 @@ from merger_freq_calculation() in mergerfirstfuns.</p>
 </dl>
 </section>
 <section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>df_diff: float (or nan)</dt><dd><p>A value describing the difference in gradient of frequency between the
 inspiral and merger/ringdown portions for points of matching frequency.</p>
@@ -82,12 +83,12 @@ inspiral and merger/ringdown portions for points of matching frequency.</p>
 </section>
 </section>
 <section id="min-switch-ind-finder">
-<h2>min_switch_ind_finder<a class="headerlink" href="#min-switch-ind-finder" title="Permalink to this headline">¶</a></h2>
+<h2>min_switch_ind_finder<a class="headerlink" href="#min-switch-ind-finder" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">min_switch_ind_finder(i_time,i_omega,m_time,m_omega)</span></code></p>
 <p>Finds the index in the merger/ringdown data where the switch from inspiral
 to merger/ringdown should occur, as part of the matching process.</p>
 <section id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>i_time: list of floats</dt><dd><p>Real time values for the inspiral portion, from
 inspiral_time_conversion() in inspiralfuns.</p>
@@ -104,7 +105,7 @@ from merger_freq_calculation() in mergerfirstfuns.</p>
 </dl>
 </section>
 <section id="id2">
-<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
 merger/ringdown should occur.</p>
@@ -113,12 +114,12 @@ merger/ringdown should occur.</p>
 </section>
 </section>
 <section id="final-i-index-finder">
-<h2>final_i_index_finder<a class="headerlink" href="#final-i-index-finder" title="Permalink to this headline">¶</a></h2>
+<h2>final_i_index_finder<a class="headerlink" href="#final-i-index-finder" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">final_i_index_finder(min_switch_ind,i_omega,m_omega)</span></code></p>
 <p>Finds what the last index in the inspiral data before the switch to the
 merger/ringdown should be, as part of the matching process.</p>
 <section id="id3">
-<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
 merger/ringdown should occur, from min_switch_ind_finder().</p>
@@ -132,7 +133,7 @@ from merger_freq_calculation() in mergerfirstfuns.</p>
 </dl>
 </section>
 <section id="id4">
-<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
 ringdown.</p>
@@ -141,12 +142,12 @@ ringdown.</p>
 </section>
 </section>
 <section id="time-offset-finder">
-<h2>time_offset_finder<a class="headerlink" href="#time-offset-finder" title="Permalink to this headline">¶</a></h2>
+<h2>time_offset_finder<a class="headerlink" href="#time-offset-finder" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">time_offset_finder(min_switch_ind,final_i_index,i_time,m_time)</span></code></p>
 <p>Calculates what the offset between the time values of the inspiral and
 merger/ringdown portions should be to match them together.</p>
 <section id="id5">
-<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
 merger/ringdown should occur, from min_switch_ind_finder().</p>
@@ -163,7 +164,7 @@ merger_time_conversion() in mergerfirstfuns.</p>
 </dl>
 </section>
 <section id="id6">
-<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>time_offset: float</dt><dd><p>The offset between the time values of the inspiral and merger/ringdown
 portions.</p>
@@ -172,13 +173,13 @@ portions.</p>
 </section>
 </section>
 <section id="time-frequency-stitching">
-<h2>time_frequency_stitching<a class="headerlink" href="#time-frequency-stitching" title="Permalink to this headline">¶</a></h2>
+<h2>time_frequency_stitching<a class="headerlink" href="#time-frequency-stitching" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">time_frequency_stitching(min_switch_ind,final_i_index,time_offset,i_time,i_omega,m_time,m_omega)</span></code></p>
 <p>Stitches together the inspiral and merger/ringdown portions of the time and
 angular frequency lists to give combined lists for these with the correct
 matching.</p>
 <section id="id7">
-<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
 merger/ringdown should occur, from min_switch_ind_finder().</p>
@@ -204,7 +205,7 @@ from merger_freq_calculation() in mergerfirstfuns.</p>
 </dl>
 </section>
 <section id="id8">
-<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>[i_m_time,i_m_omega]: list of lists of floats</dt><dd><p>The first list is the combined time values, the second list is the
 combined angular frequency values.</p>
@@ -213,13 +214,13 @@ combined angular frequency values.</p>
 </section>
 </section>
 <section id="frequency-si-units">
-<h2>frequency_SI_units<a class="headerlink" href="#frequency-si-units" title="Permalink to this headline">¶</a></h2>
+<h2>frequency_SI_units<a class="headerlink" href="#frequency-si-units" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">frequency_SI_units(i_m_omega,M)</span></code></p>
 <p>The angular frequency in geometric units translated to ordinary/temporal
 frequency in SI units (Hz). Useful for plotting and also required for the
 SNR calculator.</p>
 <section id="id9">
-<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>i_m_omega: list of floats</dt><dd><p>Values of angular frequency over time for the entire duration of the
 gravitational waveform, from time_frequency_stitching().</p>
@@ -230,7 +231,7 @@ inspiralfuns.</p>
 </dl>
 </section>
 <section id="id10">
-<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>i_m_freq: list of floats</dt><dd><p>Values of frequency in Hz for the entire duration of the gravitational
 waveform.</p>
@@ -247,8 +248,9 @@ waveform.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">matchingfuns</a><ul>
 <li><a class="reference internal" href="#mqdiff">MQdiff</a><ul>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -284,12 +286,17 @@ waveform.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="mergerfirstfuns.html"
-                        title="previous chapter">mergerfirstfuns</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="mergersecondfuns.html"
-                        title="next chapter">mergersecondfuns</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="mergerfirstfuns.html"
+                          title="previous chapter">mergerfirstfuns</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="mergersecondfuns.html"
+                          title="next chapter">mergersecondfuns</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -301,12 +308,12 @@ waveform.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -329,7 +336,7 @@ waveform.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Wouter van Zeist.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

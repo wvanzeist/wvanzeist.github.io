@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>mergersecondfuns &#8212; riroriro 1.0.2 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
@@ -43,15 +44,15 @@
           <div class="body" role="main">
             
   <section id="mergersecondfuns">
-<h1>mergersecondfuns<a class="headerlink" href="#mergersecondfuns" title="Permalink to this headline">¶</a></h1>
+<h1>mergersecondfuns<a class="headerlink" href="#mergersecondfuns" title="Permalink to this heading">¶</a></h1>
 <p>This is the documentation for the mergersecondfuns module, which consists of the post-matching parts of the procedure for simulating the merger/ringdown portions of gravitational waves from binary black holes, collected into modular functions.</p>
 <section id="merger-phase-calculation">
-<h2>merger_phase_calculation<a class="headerlink" href="#merger-phase-calculation" title="Permalink to this headline">¶</a></h2>
+<h2>merger_phase_calculation<a class="headerlink" href="#merger-phase-calculation" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">merger_phase_calculation(min_switch_ind,final_i_index,i_phase,m_omega)</span></code></p>
 <p>Calculation of the orbital phase for the merger/ringdown portion, based
 on Buskirk et al. (2019) equation 21.</p>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
 merger/ringdown should occur, from min_switch_ind_finder() in
@@ -69,7 +70,7 @@ from merger_freq_calculation() in mergerfirstfuns.</p>
 </dl>
 </section>
 <section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>m_phase: list of floats</dt><dd><p>Values of orbital phase over time for the merger/ringdown portion.</p>
 </dd>
@@ -77,12 +78,12 @@ from merger_freq_calculation() in mergerfirstfuns.</p>
 </section>
 </section>
 <section id="phase-stitching">
-<h2>phase_stitching<a class="headerlink" href="#phase-stitching" title="Permalink to this headline">¶</a></h2>
+<h2>phase_stitching<a class="headerlink" href="#phase-stitching" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">phase_stitching(final_i_index,i_phase,m_phase)</span></code></p>
 <p>Stitching together the inspiral and merger/ringdown portions of the phase
 lists to give a combined list with the correct matching.</p>
 <section id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
 ringdown, from final_i_index_finder() in matchingfuns.</p>
@@ -96,7 +97,7 @@ merger_phase_calculation().</p>
 </dl>
 </section>
 <section id="id2">
-<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>i_m_phase: list of floats</dt><dd><p>Values of orbital phase over time for the entire duration of the
 gravitational waveform.</p>
@@ -105,12 +106,12 @@ gravitational waveform.</p>
 </section>
 </section>
 <section id="merger-strain-amplitude">
-<h2>merger_strain_amplitude<a class="headerlink" href="#merger-strain-amplitude" title="Permalink to this headline">¶</a></h2>
+<h2>merger_strain_amplitude<a class="headerlink" href="#merger-strain-amplitude" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">merger_strain_amplitude(min_switch_ind,final_i_index,alpha,i_amp,m_omega,fhat,fhatdot)</span></code></p>
 <p>Calculating the amplitude of strain for the merger/ringdown portion, based
 on Buskirk et al. (2019) equation 16.</p>
 <section id="id3">
-<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>min_switch_ind: int</dt><dd><p>The index in the merger/ringdown data where the switch from inspiral to
 merger/ringdown should occur, from min_switch_ind_finder() in
@@ -136,7 +137,7 @@ fhat_differentiation() in mergerfirstfuns.</p>
 </dl>
 </section>
 <section id="id4">
-<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>m_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the
 merger/ringdown portion.</p>
@@ -145,12 +146,12 @@ merger/ringdown portion.</p>
 </section>
 </section>
 <section id="amplitude-stitching">
-<h2>amplitude_stitching<a class="headerlink" href="#amplitude-stitching" title="Permalink to this headline">¶</a></h2>
+<h2>amplitude_stitching<a class="headerlink" href="#amplitude-stitching" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">amplitude_stitching(final_i_index,i_amp,m_amp)</span></code></p>
 <p>Stitching together the inspiral and merger/ringdown portions of the
 amplitude lists to give a combined list with the correct matching.</p>
 <section id="id5">
-<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
 ringdown, from final_i_index_finder() in matchingfuns.</p>
@@ -164,7 +165,7 @@ merger/ringdown portion, from merger_strain_amplitude().</p>
 </dl>
 </section>
 <section id="id6">
-<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>i_m_amp: list of floats</dt><dd><p>The values of the amplitude of the GW strain over time for the entire
 duration of the gravitational waveform.</p>
@@ -173,11 +174,11 @@ duration of the gravitational waveform.</p>
 </section>
 </section>
 <section id="merger-polarisations">
-<h2>merger_polarisations<a class="headerlink" href="#merger-polarisations" title="Permalink to this headline">¶</a></h2>
+<h2>merger_polarisations<a class="headerlink" href="#merger-polarisations" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">merger_polarisations(final_i_index,m_amp,m_phase,i_Aorth)</span></code></p>
 <p>Calculating the values of the two polarisations of strain for the merger.</p>
 <section id="id7">
-<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
 ringdown, from final_i_index_finder() in matchingfuns.</p>
@@ -195,7 +196,7 @@ inspiralfuns.</p>
 </dl>
 </section>
 <section id="id8">
-<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>[m_Aorth,m_Adiag]: list of lists of floats</dt><dd><p>The first list is the values of the orthogonal/plus polarisation of
 strain over time, the second list is the diagonal/cross polarisation.</p>
@@ -204,12 +205,12 @@ strain over time, the second list is the diagonal/cross polarisation.</p>
 </section>
 </section>
 <section id="polarisation-stitching">
-<h2>polarisation_stitching<a class="headerlink" href="#polarisation-stitching" title="Permalink to this headline">¶</a></h2>
+<h2>polarisation_stitching<a class="headerlink" href="#polarisation-stitching" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">polarisation_stitching(final_i_index,i_Aorth,i_Adiag,m_Aorth,m_Adiag)</span></code></p>
 <p>Stitching together the inspiral and merger/ringdown portions of the
 polarisation lists to give combined lists with the correct matching.</p>
 <section id="id9">
-<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>final_i_index: int</dt><dd><p>The last index in the inspiral data before the switch to the merger/
 ringdown, from final_i_index_finder() in matchingfuns.</p>
@@ -231,7 +232,7 @@ the merger/ringdown portion, from merger_polarisations().</p>
 </dl>
 </section>
 <section id="id10">
-<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3>Returns<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt>[i_m_Aorth,i_m_Adiag]: list of lists of floats</dt><dd><p>The first list is the combined orthogonal/plus polarisation values, the
 second list is the combined diagonal/cross polarisation values.</p>
@@ -248,8 +249,9 @@ second list is the combined diagonal/cross polarisation values.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">mergersecondfuns</a><ul>
 <li><a class="reference internal" href="#merger-phase-calculation">merger_phase_calculation</a><ul>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -285,12 +287,17 @@ second list is the combined diagonal/cross polarisation values.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="matchingfuns.html"
-                        title="previous chapter">matchingfuns</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="gwexporter.html"
-                        title="next chapter">gwexporter</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="matchingfuns.html"
+                          title="previous chapter">matchingfuns</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="gwexporter.html"
+                          title="next chapter">gwexporter</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -302,12 +309,12 @@ second list is the combined diagonal/cross polarisation values.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -330,7 +337,7 @@ second list is the combined diagonal/cross polarisation values.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Wouter van Zeist.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>
